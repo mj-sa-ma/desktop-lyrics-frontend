@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop Lyrics Frontend</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="src/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell" data-theme="studio">
+      <section class="track-context" data-role="track-context" aria-label="Current track">
+        <div class="window-strip" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="cover-frame">
+          <img class="cover-art" src="assets/cover.svg" alt="Abstract album artwork for Neon Skyline" />
+        </div>
+
+        <div class="track-copy">
+          <p class="eyebrow">Now playing</p>
+          <h1>Neon Skyline</h1>
+          <p>Ari Vale</p>
+        </div>
+
+        <div class="track-stats" aria-label="Track details">
+          <div>
+            <span>Key</span>
+            <strong>F minor</strong>
+          </div>
+          <div>
+            <span>BPM</span>
+            <strong>104</strong>
+          </div>
+          <div>
+            <span>Source</span>
+            <strong>Local</strong>
+          </div>
+        </div>
+
+        <div class="wave-meter" aria-label="Audio activity">
+          <span style="--level: 42%"></span>
+          <span style="--level: 68%"></span>
+          <span style="--level: 52%"></span>
+          <span style="--level: 88%"></span>
+          <span style="--level: 48%"></span>
+          <span style="--level: 72%"></span>
+          <span style="--level: 38%"></span>
+          <span style="--level: 64%"></span>
+          <span style="--level: 54%"></span>
+          <span style="--level: 80%"></span>
+          <span style="--level: 46%"></span>
+          <span style="--level: 60%"></span>
+        </div>
+      </section>
+
+      <section class="lyrics-workspace" aria-label="Lyrics player">
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">Synced lyrics</p>
+            <h2>Focus view</h2>
+          </div>
+          <div class="mode-switch" aria-label="Lyric mode">
+            <button class="is-active" type="button">Live</button>
+            <button type="button">Line</button>
+            <button type="button">Full</button>
+          </div>
+        </header>
+
+        <section class="lyrics-stage" data-role="lyrics-stage" aria-live="polite">
+          <ol class="lyrics-list" id="lyricsList"></ol>
+        </section>
+
+        <section class="timeline" aria-label="Playback timeline">
+          <div class="time-row">
+            <span id="currentTime">0:52</span>
+            <span id="duration">4:04</span>
+          </div>
+          <input id="progress" class="progress" type="range" min="0" max="244" value="52" aria-label="Playback position" />
+        </section>
+
+        <nav class="player-controls" data-role="player-controls" aria-label="Playback controls">
+          <button class="icon-button" id="shuffle" type="button" title="Shuffle">
+            <i data-lucide="shuffle"></i>
+          </button>
+          <button class="icon-button" id="previous" type="button" title="Previous track">
+            <i data-lucide="skip-back"></i>
+          </button>
+          <button class="icon-button primary" id="playToggle" type="button" title="Play">
+            <i data-lucide="play"></i>
+          </button>
+          <button class="icon-button" id="next" type="button" title="Next track">
+            <i data-lucide="skip-forward"></i>
+          </button>
+          <button class="icon-button" id="repeat" type="button" title="Repeat">
+            <i data-lucide="repeat-2"></i>
+          </button>
+        </nav>
+      </section>
+
+      <aside class="queue-panel" data-role="queue-panel" aria-label="Queue and lyrics settings">
+        <section class="tool-surface">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Up next</p>
+              <h2>Queue</h2>
+            </div>
+            <button class="icon-button small" type="button" title="More queue options">
+              <i data-lucide="ellipsis"></i>
+            </button>
+          </div>
+          <div class="queue-list" id="queueList"></div>
+        </section>
+
+        <section class="tool-surface">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Display</p>
+              <h2>Lyrics style</h2>
+            </div>
+          </div>
+
+          <label class="setting-row" for="fontSize">
+            <span>Text size</span>
+            <input id="fontSize" type="range" min="28" max="48" value="38" />
+          </label>
+
+          <label class="setting-row" for="lineSpacing">
+            <span>Line spacing</span>
+            <input id="lineSpacing" type="range" min="1" max="2" value="1.34" step="0.02" />
+          </label>
+
+          <label class="toggle-row" for="focusMode">
+            <span>Dim inactive lines</span>
+            <input id="focusMode" type="checkbox" checked />
+          </label>
+
+          <div class="swatch-row" aria-label="Accent color">
+            <button class="swatch is-selected" type="button" style="--swatch: #46c7b8" title="Teal"></button>
+            <button class="swatch" type="button" style="--swatch: #f2a65a" title="Amber"></button>
+            <button class="swatch" type="button" style="--swatch: #dd6b7f" title="Rose"></button>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </body>
+</html>
